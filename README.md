@@ -36,7 +36,7 @@ $ docker run --rm \
 ```
 5. .envの作成
 - .env.exampleの名前を変更して.envにすれば良いです。
-6. sailのインストール 
+6. 環境変数の上書き 
 - .envを編集してもいけるのかもしれないですが、自分の場合はうまく行かなかったのでインストールします。
 - 今回はmysqlを利用するので0を押します。
 ```
@@ -69,12 +69,12 @@ $ sail up
 ```
 8. アプリケーションキーの設定
 ```
-$ sail artisan key:generate
+$ php artisan key:generate
 
 ```
 9. sailを立ち上げる
 ```
-$ sail up
+$ sail up -d
 
 ```
 10. migrateする
@@ -84,8 +84,12 @@ $ sail artisan migrate
 ```
 11. http://localhost/  へアクセスする
 - 一通り完了です。
-11. 停止する場合<br>
-Control　+ C
+- 会員登録して遊んでみてください。
+12. 停止する場合
+```
+$ sail up down
+
+```
 
 # メール送信に関して
 - .envをの編集をお願いします。(gmailのsmtpを利用して送信など)
