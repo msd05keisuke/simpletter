@@ -24,7 +24,7 @@ $ git clone https://github.com/msd05keisuke/blog.git
 ```
 $ .cd blog
 ```
-4. 依存関係系のインストール(composerなど)<br>
+4. Composer依存関係のインストール
 - お時間かかります
 ```
 $ docker run --rm \
