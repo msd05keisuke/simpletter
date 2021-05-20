@@ -7,7 +7,7 @@
 
 
 # Laravel Sail
-今回はLaravel Sailを使った実行方法です。Laravel Sailとは簡単に言えばLaravel専用のDockerイメージのような感じです。
+今回はLaravel Sailを使った実行方法です。Laravel Sailとは簡単に言えばLaravel専用のDockerイメージのような感じです。
 必要な機能(composer(php),mysql,redis,npm,mail hog,laravel dusk)がまとめられているので基本的に他には何も要りません。
 
 
