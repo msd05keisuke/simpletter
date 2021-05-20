@@ -1,4 +1,4 @@
-# SNSアプリ？？？？？？？
+# 一言ブログ(twitter風)
 - 会員登録機能
 - つぶやきの投稿/更新/削除
 - つぶやきに対するいいね機能
@@ -14,24 +14,77 @@
 # 実行方法
 1. Dockerをインストールする<br>
 https://www.docker.com/<br>
-※M1チップでdockerが使えない場合は下記を参照<br>
+- M1チップでdockerが使えない場合は下記を参照<br>
 https://genchan.net/it/virtualization/docker/13550/
-2. プロジェクトへ移動する
+2. cloneする
 ```
-$ cd blog
+$ git clone https://github.com/msd05keisuke/blog.git
 ```
-3. Sailを立ち上げる<br>
-※初回は数分かかります。
+3. プロジェクトへ移動<br>
 ```
+$ .cd blog
+```
+4. 依存関係系のインストール(composerなど)<br>
+- お時間かかります
+```
+$ docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/opt \
+    -w /opt \
+    laravelsail/php80-composer:latest \
+    composer install --ignore-platform-reqs
+```
+5. .envの作成
+- .env.exampleの名前を変更して.envにすれば良いです。
+6. sailのインストール 
+- .envを編集してもいけるのかもしれないですが、自分の場合はうまく行かなかったのでインストールします。
+- 今回はmysqlを利用するので0を押します。
+```
+$ php artisan sail:install
+
+Which services would you like to install? [mysql]:
+  [0] mysql
+  [1] pgsql
+  [2] mariadb
+  [3] redis
+  [4] memcached
+  [5] meilisearch
+  [6] mailhog
+  [7] selenium
+ > 0
+
+Sail scaffolding installed successfully.
+
+```
+7. Bashエイリアスの設定
+- やらなくても良いのですが、これをやった方が楽なのでやります。
+```
+$ alias sail='bash vendor/bin/sail'
+
+エイリアス設定前
 $ ./vendor/bin/sail up
+エイリアス設定後
+$ sail up
+
 ```
-4. migrateする<br>
-※sail upしている状態でmigrateをしてください。
+8. アプリケーションキーの設定
 ```
-$ ./vendor/bin/sail artisan migrate
+$ sail artisan key:generate
+
 ```
-5. http://localhost/  へアクセスする
-6. 停止する場合<br>
+9. sailを立ち上げる
+```
+$ sail up
+
+```
+10. migrateする
+```
+$ sail artisan migrate
+
+```
+11. http://localhost/  へアクセスする
+- 一通り完了です。
+11. 停止する場合<br>
 Control　+ C
 
 # メール送信に関して
