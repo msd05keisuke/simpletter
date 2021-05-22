@@ -10,18 +10,25 @@ use Auth;
 
 class BlogController extends Controller
 {
-    //ブログ一覧を表示
-    public function showList()
+    //ブログ一覧を表示&検索結果の表示
+    public function showList(Request $request)
     {
-        //　ページネーションで5個の投稿ごと表示
-        $blogs = Blog::latest()->paginate(5);
-        //dd($blogs);
+        if ($request->search == '') {
+            $blogs = Blog::latest()->paginate(5);
+        }else {
+            $query = Blog::query();
+            $count = $query->where('content','like','%'.$request->search.'%')->count();
+            $blogs = $query->where('content','like','%'.$request->search.'%')->latest()->paginate(5);
+            //dd($blogs);
+            \Session::flash('err_msg', '検索結果は'.$count.'件です');
+        }
 
         return view(
             'blog.blogs',
             [
-                'blogs' => $blogs,
+                'blogs' => $blogs
             ]
+
         );
     }
 
@@ -128,26 +135,5 @@ class BlogController extends Controller
         \Session::flash('err_msg', 'ブログを更新しました');
         
         return redirect('/');
-    }
-
-    //ブログの検索画面を表示
-    public function showSearch(Request $request)
-    {
-        if ($request->search == '') {
-            $blogs = Blog::latest()->paginate(5);
-        }else {
-            $query = Blog::query();
-            $blogs = $query->where('content','like','%'.$request->search.'%')->latest()->paginate(5);
-            //dd($blogs);
-            \Session::flash('err_msg', '検索結果は'.$blogs->count().'件です');
-        }
-
-        return view(
-            'blog.search',
-            [
-                'blogs' => $blogs
-            ]
-
-        );
     }
 }

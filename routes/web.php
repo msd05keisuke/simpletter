@@ -37,7 +37,7 @@ Route::get('/blog/delete/{blog}', [App\Http\Controllers\BlogController::class, '
 Route::get('/blog/edit/{blog}', [App\Http\Controllers\BlogController::class, 'showEdit'])->middleware('auth')->name('edit');
 //ブログの更新
 Route::post('/blog/update/{blog}', [App\Http\Controllers\BlogController::class, 'exeUpdate'])->middleware('auth')->name('update');
-//ブログ検索画面の表示
+//ブログの検索
 Route::get('/blog/search', [App\Http\Controllers\BlogController::class, 'showSearch'])->name('search');
 
 

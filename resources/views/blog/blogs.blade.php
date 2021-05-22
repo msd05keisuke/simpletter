@@ -6,6 +6,15 @@
     <div class="row">
         <div class="col-lg-1"></div>
         <div class="col-lg-10">
+            <!-- 検索フォーム -->
+            <form action="/" method="GET">
+                <div class="input-group">
+                    @csrf
+                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="search" />
+                    <button type="submit" class="btn btn-info ml-auto">search</button>
+                </div>
+            </form>
+
             <!-- メッセージ -->
             @if (session('err_msg'))
             <div class="alert alert-success" role="alert">
@@ -55,7 +64,7 @@
                                 <div class="row justify-content-center mt-1">
                                     <div class="col-md-12">
                                         <div>
-                                            <a href="/login"　class="u-link-v5 g-color-gray-dark-v4">
+                                            <a href="/login" 　class="u-link-v5 g-color-gray-dark-v4">
                                                 <i class="fa fa-thumbs-up"> {{ $blog->users->count() }}</i>
                                             </a>
                                         </div>
@@ -75,7 +84,8 @@
             @endforeach
         </div>
     </div>
-    <div class="d-flex align-items-center justify-content-center">{{ $blogs->links() }}</div>
+    
+    <div class="d-flex align-items-center justify-content-center">{{ $blogs->appends(request()->input())->links() }}</div>
 </div>
 @endsection
 

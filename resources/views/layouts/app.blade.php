@@ -39,13 +39,10 @@
 
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{{ route('blogs') }}">投稿一覧</a>
+                            <a class="nav-link" href="{{ route('blogs') }}">HOME</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('new') }}">新規投稿</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/blog/search">検索</a>
                         </li>
                         <li class="nav-item">
                             @auth
