@@ -13,7 +13,7 @@
 
 # 実行方法
 1. Dockerをインストールする<br>
-- https://www.docker.com/<br>
+https://www.docker.com/<br>
 - M1チップでdockerが使えない場合は下記を参照<br>
 https://genchan.net/it/virtualization/docker/13550/
 2. cloneする
