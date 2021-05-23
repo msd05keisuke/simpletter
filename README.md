@@ -1,4 +1,4 @@
-# shimpletter
+# simpletter
 - 会員登録機能
 - つぶやきの投稿/更新/削除
 - つぶやきに対するいいね機能
@@ -118,11 +118,11 @@ Laravel SailはDockerボリュームを使用しているのでコンテナを�
 ```
 $ docker volume ls
   DRIVER    VOLUME NAME
-  local     shimpletter_sailmysql
+  local     simpletter_sailmysql
 ```
 2. ボリュームの削除
 ```
-$ docker volume rm shimpletter_sailmysql
+$ docker volume rm simpletter_sailmysql
 ```
 
 
