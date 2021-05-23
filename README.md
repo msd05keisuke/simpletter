@@ -111,6 +111,8 @@ mysql:
 mysql:
         image: 'mariadb:10.5.8'
 ```
+# phpmyadmin
+- http://localhost:8080/
 
 # ボリュームの削除
 Laravel SailはDockerボリュームを使用しているのでコンテナを停止して再起動しても、データベースに保存されているデータは保持されます。不要になった場合は削除をお願いします。
