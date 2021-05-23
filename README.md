@@ -18,7 +18,7 @@ https://www.docker.com/<br>
 https://genchan.net/it/virtualization/docker/13550/
 2. cloneする
 ```
-$ git clone https://github.com/msd05keisuke/blog.git
+$ git clone https://github.com/msd05keisuke/simpletter.git
 ```
 3. プロジェクトへ移動<br>
 ```
