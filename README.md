@@ -1,4 +1,4 @@
-# 一言ブログ(twitter風)
+# shimpletter
 - 会員登録機能
 - つぶやきの投稿/更新/削除
 - つぶやきに対するいいね機能
@@ -22,7 +22,7 @@ $ git clone https://github.com/msd05keisuke/blog.git
 ```
 3. プロジェクトへ移動<br>
 ```
-$ .cd blog
+$ .cd shimpletter
 ```
 4. Composer依存関係のインストール
 - お時間かかります
@@ -118,11 +118,11 @@ Laravel SailはDockerボリュームを使用しているのでコンテナを�
 ```
 $ docker volume ls
   DRIVER    VOLUME NAME
-  local     blog_sailmysql
+  local     shimpletter_sailmysql
 ```
 2. ボリュームの削除
 ```
-$ docker volume rm blog_sailmysql
+$ docker volume rm shimpletter_sailmysql
 ```
 
 
