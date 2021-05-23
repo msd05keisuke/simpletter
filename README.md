@@ -25,7 +25,7 @@ $ git clone https://github.com/msd05keisuke/simpletter.git
 $ .cd simpletter
 ```
 4. Composer依存関係のインストール
-- お時間かかります
+- 数分かかります。
 ```
 $ docker run --rm \
     -u "$(id -u):$(id -g)" \
