@@ -22,7 +22,7 @@ $ git clone https://github.com/msd05keisuke/simpletter.git
 ```
 3. プロジェクトへ移動<br>
 ```
-$ .cd shimpletter
+$ .cd simpletter
 ```
 4. Composer依存関係のインストール
 - お時間かかります
