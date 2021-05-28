@@ -87,7 +87,7 @@ $ sail artisan migrate
 - 会員登録して遊んでみてください。
 12. 停止する場合
 ```
-$ sail up down
+$ sail down
 
 ```
 
