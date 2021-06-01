@@ -77,7 +77,7 @@ $ php artisan key:generate
 $ sail up -d
 
 ```
-10. migrateとseeding(初期データと挿入)を同時に行う
+10. migrateとseeding(初期データの挿入)を同時に行う
 ```
 $ sail artisan migrate:fresh --seed
 
