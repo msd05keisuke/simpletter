@@ -13,6 +13,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        //userの初期データを１０件挿入する
+        \App\Models\User::factory(10)->create();
+
+        //そのほかの初期データを挿入する
+        $this->call([
+            BlogTableSeeder::class,
+            LikeTableSeeder::class,
+            Follow_userTableSeeder::class
+        ]);
+
+
     }
 }
