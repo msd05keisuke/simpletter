@@ -4,7 +4,7 @@
 - つぶやきに対する返信機能
 - つぶやきに対するいいね機能<br>
 ![いいね](https://user-images.githubusercontent.com/75054606/120490911-c4228d00-c3f3-11eb-80c9-d12b53176de6.gif "いいね")
-- ユーザー間のフォローフォロワー機能
+- ユーザー間のフォローフォロワー機能<br>
 ![フォロー](https://user-images.githubusercontent.com/75054606/120492139-c5a08500-c3f4-11eb-8e84-146c483a726e.gif "フォロー")
 
 
