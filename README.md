@@ -14,87 +14,45 @@
 
 
 # 実行方法
-1. Dockerをインストールする<br>
-https://www.docker.com/<br>
-- M1チップでdockerが使えない場合は下記を参照<br>
-https://genchan.net/it/virtualization/docker/13550/
-2. cloneする
+※Dockerのインストールが必要です。<br>
 ```
+// cloneする
 $ git clone https://github.com/msd05keisuke/simpletter.git
-```
-3. プロジェクトへ移動<br>
-```
+
+// プロジェクトへ移動
 $ cd simpletter
-```
-4. Composer依存関係のインストール
-- 数分かかります。
-```
+
+// Composer依存関係のインストール
 $ docker run --rm \
     -u "$(id -u):$(id -g)" \
     -v $(pwd):/opt \
     -w /opt \
     laravelsail/php80-composer:latest \
     composer install --ignore-platform-reqs
-```
-5. .envの作成
-- .env.exampleの名前を変更して.envにすれば良いです。
-6. 環境変数の上書き 
-- .envを編集してもいけるのかもしれないですが、自分の場合はうまく行かなかったのでインストールします。
-- 今回はmysqlを利用するので0を押します。
-```
+ 
+// .envの作成
+$ cp .env.example .env
+
+// 環境変数の上書き
 $ php artisan sail:install
 
-Which services would you like to install? [mysql]:
-  [0] mysql
-  [1] pgsql
-  [2] mariadb
-  [3] redis
-  [4] memcached
-  [5] meilisearch
-  [6] mailhog
-  [7] selenium
- > 0
-
-Sail scaffolding installed successfully.
-
-```
-7. Bashエイリアスの設定
-- やらなくても良いのですが、これをやった方が楽なのでやります。
-```
+// エイリアスの設定
 $ alias sail='bash vendor/bin/sail'
 
-エイリアス設定前
-$ ./vendor/bin/sail up
-エイリアス設定後
-$ sail up
-
-```
-8. アプリケーションキーの設定
-```
+// アプリケーションキーの設定
 $ php artisan key:generate
 
-```
-9. sailを立ち上げる
-```
+// sailを立ち上げる
 $ sail up -d
 
-```
-10. migrateとseeding(初期データの挿入)を同時に行う
-```
+// migrateとseedingの実行
 $ sail artisan migrate:fresh --seed
 
-// 初期データがいらない場合はこちら
-$ sail artisan migrate
-
-```
-11. http://localhost/  へアクセスする
-- 一通り完了です。
-- 会員登録して遊んでみてください。
-12. 停止する場合
-```
+// 停止する場合
 $ sail down
 
 ```
+- http://localhost/  へアクセスする
 
 # メール送信に関して
 - .envをの編集をお願いします。
