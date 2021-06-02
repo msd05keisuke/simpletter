@@ -52,7 +52,8 @@ $ sail artisan migrate:fresh --seed
 $ sail down
 
 ```
-- http://localhost/  へアクセスする
+- http://localhost/  simpletter
+- http://localhost:8080/ phpmyadmin
 
 # メール送信に関して
 - .envをの編集をお願いします。
@@ -74,8 +75,6 @@ mysql:
 mysql:
         image: 'mariadb:10.5.8'
 ```
-# phpmyadmin
-- http://localhost:8080/
 
 # ボリュームの削除
 Laravel SailはDockerボリュームを使用しているのでコンテナを停止して再起動しても、データベースに保存されているデータは保持されます。不要になった場合は削除をお願いします。
