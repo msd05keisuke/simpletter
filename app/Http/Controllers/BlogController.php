@@ -63,9 +63,6 @@ class BlogController extends Controller
     //ブログの削除
     public function exeDelete($id)
     {
-        if (empty($id)) {
-            abort(500);
-        }
 
         $blog = Blog::find($id);
 
@@ -96,7 +93,7 @@ class BlogController extends Controller
         if (is_null($blog)) {
             abort(404);
         }elseif ($blog->user->id != Auth::user()->id){
-        //本人以外削除しようとした場合に404を返す
+        //本人以外が編集しようとした場合に404を返す
             abort(404);
         }
 

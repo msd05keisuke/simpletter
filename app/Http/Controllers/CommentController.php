@@ -12,7 +12,7 @@ use App\Http\Requests\CommentRequest;
 class CommentController extends Controller
 {
     //コメント画面を表示
-    public function showcomment(Blog $blog)
+    public function commentShow(Blog $blog)
     {
         //dd($blog->comments->blog->user);
 
@@ -43,18 +43,10 @@ class CommentController extends Controller
     //コメントの削除機能
     public function commentDelete($id)
     {
-        if (empty($id)) {
-            abort(500);
-        }
-
+        //dd($id);
         $comment = Comment::find($id);
-
-        try {
-            //コメントを削除
-            $comment->delete();
-        } catch (\Throwable $th) {
-            abort(500);
-        }
+        //コメントを削除
+        $comment->delete();
 
         return redirect()->back();
     }

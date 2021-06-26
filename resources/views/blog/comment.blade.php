@@ -38,7 +38,7 @@
                                             {{ $errors->first('content') }}
                                         </div>
                                         @endif
-                                        <form accept-charset="UTF-8" method="POST" action="/blog/comments/{{ $blog->id }}">
+                                        <form accept-charset="UTF-8" method="post" action="{{ route('commentstore', $blog->id) }}">
                                             @csrf
                                             <textarea class="form-control" placeholder="write a comment..." rows="3" name="content" id="content"></textarea>
                                             <input type="hidden" name="blog_id" id="blog_id" value="{{ $blog->id }}">
@@ -61,7 +61,13 @@
                                                         <div class="dropdown">
                                                             <i class="fa fa-ellipsis-h" style="color: gray;font-size:20px" 　type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                <a class="dropdown-item" href="{{ route('commentdelete', $comment->id) }}" onclick="return confirm('本当に削除しますか？')"><i class="fa fa-trash-o"></i>　Delete</a>
+                                                                
+
+                                                                <!-- 削除 -->
+                                                                <form method="post" name="form_delete" action="{{ route('commentdelete', $comment->id) }}">
+                                                                    @csrf
+                                                                    <a class="dropdown-item" onclick="return confirm('本当に削除しますか？')" href="javascript:document.forms.form_delete.submit()"><i class="fa fa-trash-o"></i>　Delete</a>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                         @endif

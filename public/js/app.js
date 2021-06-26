@@ -1933,15 +1933,14 @@ __webpack_require__.r(__webpack_exports__);
       result: "false"
     };
   },
-  beforeMount: function beforeMount() {
+  mounted: function mounted() {
     this.hasfollow();
-    this.countfollow();
   },
   methods: {
     follow: function follow() {
       var _this = this;
 
-      axios.get("/profile/follow/" + this.user.id).then(function (res) {
+      axios.post("/profile/follow/" + this.user.id).then(function (res) {
         _this.result = res.data.result;
         _this.count = res.data.count; //console.log(res.data.result);
         //console.log(res.data.count);
@@ -1952,7 +1951,7 @@ __webpack_require__.r(__webpack_exports__);
     unfollow: function unfollow() {
       var _this2 = this;
 
-      axios.get("/profile/unfollow/" + this.user.id).then(function (res) {
+      axios.post("/profile/unfollow/" + this.user.id).then(function (res) {
         _this2.result = res.data.result;
         _this2.count = res.data.count; //console.log(res.data.result);
         //console.log(res.data.count);
@@ -1960,20 +1959,11 @@ __webpack_require__.r(__webpack_exports__);
         alert(error);
       });
     },
-    countfollow: function countfollow() {
+    hasfollow: function hasfollow() {
       var _this3 = this;
 
-      axios.get("/profile/countfollow/" + this.user.id).then(function (res) {
-        _this3.count = res.data; //console.log(this.count = res.data)
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    },
-    hasfollow: function hasfollow() {
-      var _this4 = this;
-
       axios.get("/profile/hasfollow/" + this.user.id).then(function (res) {
-        _this4.result = res.data; //console.log(res.data);
+        _this3.result = res.data; //console.log(res.data);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2019,14 +2009,16 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.hasfavorites();
+    //最初にフォローしてるかしてないかの判定を行う
+    this.hasfavorites(); //いいねの数を取得する
+
     this.countfavorites();
   },
   methods: {
     favorite: function favorite() {
       var _this = this;
 
-      axios.get("/blog/favorite/" + this.blog.id).then(function (res) {
+      axios.post("/blog/favorite/" + this.blog.id).then(function (res) {
         _this.result = res.data.result;
         _this.count = res.data.count; //console.log(this.result)
       })["catch"](function (error) {
@@ -2036,9 +2028,9 @@ __webpack_require__.r(__webpack_exports__);
     unfavorite: function unfavorite() {
       var _this2 = this;
 
-      axios.get("/blog/unfavorite/" + this.blog.id).then(function (res) {
+      axios.post("/blog/unfavorite/" + this.blog.id).then(function (res) {
         _this2.result = res.data.result;
-        _this2.count = res.data.count;
+        _this2.count = res.data.count; //console.log(this.result)
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2056,7 +2048,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       axios.get("/blog/hasfavorite/" + this.blog.id).then(function (res) {
-        _this4.result = res.data;
+        _this4.result = res.data; //console.log(this.result)
       })["catch"](function (error) {
         console.log(error);
       });
@@ -50218,7 +50210,7 @@ Vue.compile = compileToFunctions;
 /******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
 /******/ 				}
 /******/ 			}
-/******/ 			if(runtime) runtime(__webpack_require__);
+/******/ 			if(runtime) var result = runtime(__webpack_require__);
 /******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
 /******/ 			for(;i < chunkIds.length; i++) {
 /******/ 				chunkId = chunkIds[i];
@@ -50227,7 +50219,7 @@ Vue.compile = compileToFunctions;
 /******/ 				}
 /******/ 				installedChunks[chunkIds[i]] = 0;
 /******/ 			}
-/******/ 			__webpack_require__.O();
+/******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
 /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];

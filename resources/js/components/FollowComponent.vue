@@ -52,14 +52,13 @@ export default {
       result: "false",
     };
   },
-  beforeMount() {
+  mounted() {
     this.hasfollow();
-    this.countfollow();
   },
   methods: {
     follow() {
       axios
-        .get("/profile/follow/" + this.user.id)
+        .post("/profile/follow/" + this.user.id)
         .then((res) => {
           this.result = res.data.result;
           this.count = res.data.count;
@@ -72,7 +71,7 @@ export default {
     },
     unfollow() {
       axios
-        .get("/profile/unfollow/" + this.user.id)
+        .post("/profile/unfollow/" + this.user.id)
         .then((res) => {
           this.result = res.data.result;
           this.count = res.data.count;
@@ -81,17 +80,6 @@ export default {
         })
         .catch((error) => {
           alert(error);
-        });
-    },
-    countfollow() {
-      axios
-        .get("/profile/countfollow/" + this.user.id)
-        .then((res) => {
-          this.count = res.data;
-          //console.log(this.count = res.data)
-        })
-        .catch(function (error) {
-          console.log(error);
         });
     },
     hasfollow() {

@@ -24,13 +24,15 @@ export default {
     };
   },
   mounted() {
+    //最初にフォローしてるかしてないかの判定を行う
     this.hasfavorites();
+    //いいねの数を取得する
     this.countfavorites();
   },
   methods: {
     favorite() {
       axios
-        .get("/blog/favorite/" + this.blog.id)
+        .post("/blog/favorite/" + this.blog.id)
         .then((res) => {
           this.result = res.data.result;
           this.count = res.data.count;
@@ -42,10 +44,11 @@ export default {
     },
     unfavorite() {
       axios
-        .get("/blog/unfavorite/" + this.blog.id)
+        .post("/blog/unfavorite/" + this.blog.id)
         .then((res) => {
           this.result = res.data.result;
           this.count = res.data.count;
+          //console.log(this.result)
         })
         .catch(function (error) {
           console.log(error);
@@ -67,6 +70,7 @@ export default {
         .get("/blog/hasfavorite/" + this.blog.id)
         .then((res) => {
           this.result = res.data;
+          //console.log(this.result)
         })
         .catch(function (error) {
           console.log(error);

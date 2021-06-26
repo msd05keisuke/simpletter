@@ -42,8 +42,13 @@
                                             <i class="fa fa-ellipsis-h" style="color: gray;font-size:20px" 　type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                                             　　
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <!-- 編集 -->
                                                 <a class="dropdown-item" href="{{ route('edit', $blog->id) }}"><i class="fa fa-edit"></i>　Edit</a>
-                                                <a class="dropdown-item" href="{{ route('delete', $blog->id) }}" onclick="return confirm('本当に削除しますか？')"><i class="fa fa-trash-o"></i>　Delete</a>
+                                                <!-- 削除 -->
+                                                <form method="post" name="form_delete" action="{{ route('delete', $blog->id) }}">
+                                                    @csrf
+                                                    <a class="dropdown-item" onclick="return confirm('本当に削除しますか？')" href="javascript:document.forms.form_delete.submit()"><i class="fa fa-trash-o"></i>　Delete</a>
+                                                </form>
                                             </div>
                                         </div>
                                         @endif
@@ -84,7 +89,7 @@
             @endforeach
         </div>
     </div>
-    
+
     <div class="d-flex align-items-center justify-content-center">{{ $blogs->appends(request()->input())->links() }}</div>
 </div>
 @endsection

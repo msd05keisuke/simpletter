@@ -10,35 +10,21 @@ use Auth;
 class FollowUserController extends Controller
 {
     public function follow($id) {
-        //自分をフォローしようとした場合にエラーを返す
-        if (Auth::user()->id == $id) {
-            abort(500);
-        }
         $user = User::find($id);
         $user->followers()->attach(Auth::user()->id);
-        $count = $user->followers()->count();
         $result = true;
 
-        return response()->json(['count' => $count, 'result' => $result]);
+        return response()->json(['result' => $result]);
     }
 
     public function unfollow($id) {
         $user = User::find($id);
         $user->followers()->detach(Auth::user()->id);
-        $count = $user->followers()->count();
         $result = false;
 
-        return response()->json(['count' => $count, 'result' => $result]);
+        return response()->json(['result' => $result]);
     }
 
-    public function countfollow ($id)
-    {
-        $user= User::find($id);
-        $count = $user->followers()->count();
-        return response()->json($count);
-    }
-
-    //ユーザーがアカウントをフォローしてるかしてないかの判定
     public function hasfollow($id)
     {
         $user = User::find($id);

@@ -32,7 +32,7 @@ Route::get('/blog/new', [App\Http\Controllers\BlogController::class, 'showCreate
 //ブログの新規投稿
 Route::post('/blog/new/create', [App\Http\Controllers\BlogController::class, 'exeStore'])->middleware('auth')->name('new.blog');
 //ブログの削除
-Route::get('/blog/delete/{blog}', [App\Http\Controllers\BlogController::class, 'exeDelete'])->middleware('auth')->name('delete');
+Route::post('/blog/delete/{blog}', [App\Http\Controllers\BlogController::class, 'exeDelete'])->middleware('auth')->name('delete');
 //ブログの編集画面を表示
 Route::get('/blog/edit/{blog}', [App\Http\Controllers\BlogController::class, 'showEdit'])->middleware('auth')->name('edit');
 //ブログの更新
@@ -43,9 +43,9 @@ Route::get('/blog/search', [App\Http\Controllers\BlogController::class, 'showSea
 
 
 //いいねをする 
-Route::get('/blog/favorite/{blog}', [App\Http\Controllers\FavoriteController::class, 'store'])->middleware('auth')->name('favorite');
+Route::post('/blog/favorite/{blog}', [App\Http\Controllers\FavoriteController::class, 'store'])->middleware('auth')->name('favorite');
 //いいねを解除
-Route::get('/blog/unfavorite/{blog}', [App\Http\Controllers\FavoriteController::class, 'destroy'])->middleware('auth')->name('unfavorite');
+Route::post('/blog/unfavorite/{blog}', [App\Http\Controllers\FavoriteController::class, 'destroy'])->middleware('auth')->name('unfavorite');
 //いいねカウント
 Route::get('/blog/countfavorite/{blog}', [App\Http\Controllers\FavoriteController::class, 'count'])->middleware('auth')->name('count');
 //いいね結果判定
@@ -54,16 +54,16 @@ Route::get('/blog/hasfavorite/{blog}', [App\Http\Controllers\FavoriteController:
 Route::get('/blog/likes/{user}', [App\Http\Controllers\FavoriteController::class, 'userlikes'])->middleware('auth')->name('likes');
 
 //コメント画面を表示
-Route::get('/blog/comments/{blog}', [App\Http\Controllers\CommentController::class, 'showComment'])->middleware('auth')->name('comment');
+Route::get('/blog/comments/{blog}', [App\Http\Controllers\CommentController::class, 'commentShow'])->middleware('auth')->name('comment');
 //コメントの追加
-Route::post('/blog/comments/{blog}', [App\Http\Controllers\CommentController::class, 'commentStore'])->middleware('auth')->name('commentstore');
+Route::post('/blog/comments/{blog}/create', [App\Http\Controllers\CommentController::class, 'commentStore'])->middleware('auth')->name('commentstore');
 //コメントを削除
-Route::get('/blog/comments/{blog}/delete', [App\Http\Controllers\CommentController::class, 'commentDelete'])->middleware('auth')->name('commentdelete');
+Route::post('/blog/comments/{blog}', [App\Http\Controllers\CommentController::class, 'commentDelete'])->middleware('auth')->name('commentdelete');
 
 //フォロー
-Route::get('/profile/follow/{user}', [App\Http\Controllers\FollowUserController::class, 'follow'])->middleware('auth')->name('follow');
+Route::post('/profile/follow/{user}', [App\Http\Controllers\FollowUserController::class, 'follow'])->middleware('auth')->name('follow');
 //フォロー解除
-Route::get('/profile/unfollow/{user}', [App\Http\Controllers\FollowUserController::class, 'unfollow'])->middleware('auth')->name('unfollow');
+Route::post('/profile/unfollow/{user}', [App\Http\Controllers\FollowUserController::class, 'unfollow'])->middleware('auth')->name('unfollow');
 //カウント
 Route::get('/profile/countfollow/{user}', [App\Http\Controllers\FollowUserController::class, 'countfollow'])->middleware('auth')->name('countfollow');
 //結果判定

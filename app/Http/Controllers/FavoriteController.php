@@ -54,9 +54,7 @@ class FavoriteController extends Controller
 
     public function userlikes ()
     {
-        //現在ログインしているユーザーの情報を取得
         $user = Auth::user();
-
         return view('blog.likes', ['user' => $user]);
 
     }
