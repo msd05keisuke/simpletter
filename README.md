@@ -70,7 +70,8 @@ phpmyadmin:
         networks:
             - sail
 ```
-
+ユーザー名:sail
+パスワード:password
 - http://localhost:8080/ phpmyadmin
 
 # メール送信に関して
