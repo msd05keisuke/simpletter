@@ -53,6 +53,24 @@ $ sail down
 
 ```
 - http://localhost/  simpletter
+
+# phpmyadminを利用する場合
+docker-compose.ymlに下記を追加
+```
+phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        links:
+            - mysql:mysql
+        ports:
+            - 8080:80
+        environment:
+            MYSQL_USERNAME: '${DB_USERNAME}'
+            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            PMA_HOST: mysql
+        networks:
+            - sail
+```
+
 - http://localhost:8080/ phpmyadmin
 
 # メール送信に関して
@@ -88,6 +106,13 @@ $ docker volume ls
 ```
 $ docker volume rm simpletter_sailmysql
 ```
+
+
+
+
+
+
+
 
 
 
